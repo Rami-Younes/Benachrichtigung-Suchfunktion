@@ -1,0 +1,126 @@
+{% load static%}
+
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Die unterschiedliche Datensätze</title>
+  </head>
+  <body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#"><h1 style="color:red">Comline AG</h1></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+
+  </div>
+</nav>
+    <h1>Suchen Sie nach eine Kunde</h1>
+    <form class="form-inline active-pink-3 active-pink-4" method="post" action="/search/">
+         {% csrf_token%}
+  <i class="fas fa-search" aria-hidden="true"></i>
+  <input class="form-control form-control-sm ml-3 w-75" type="text" name="srh" placeholder="suchen-Fullname"
+    aria-label="Search">
+</form>
+
+
+
+
+<!--    <form method="post" action="/search/">-->
+<!--        {% csrf_token%}-->
+<!--        <div class="form-group">-->
+<!--            <div class="col-lg-5">-->
+<!--                <input type="text" name="srh" class="form-control" >-->
+
+<!--            </div>-->
+<!--            <label class="col-lg-2">-->
+<!--                <button type="submit" class="btn btn-danger">Search</button>-->
+<!--            </label>-->
+<!--        </div>-->
+
+<!--    </form>-->
+  <div class="container">
+   <div>
+    {%if messages%}
+    <ul class="messages">
+        {% for k in messages %}
+        <li style="color:blue">{{k}}</li>
+        {% endfor %}
+    </ul>
+    {%endif%}
+</div><br>
+<div style="color:blue">
+    {%if sr%}
+    {%for k in sr%}
+    <h4>Datensätze in JiraDB</h4>
+    <table border="1px" width="300px">
+        <tr>
+            <td>Fullname</td>
+            <td>{{k.Fullname}}</td>
+        </tr>
+         <tr>
+            <td>E-Mail</td>
+            <td>{{k.E_Mail}}</td>
+        </tr>
+         <tr>
+            <td>Benutzername</td>
+            <td>{{k.Benutzername}}</td>
+         </tr>
+    </table>
+
+    {%endfor%}
+    {%endif%}
+</div>
+    <div style="color:BLACK">
+    {%if sr2%}
+    {%for k in sr2%}
+        <h4>Datensätze in PortalDB</h4>
+    <table border="1px"  width="300px">
+        <tr>
+            <td>Fullname</td>
+             <td>{{k.FullnameP}}</td>
+        </tr>
+         <tr>
+            <td>E-Mail</td>
+             <td>{{k.E_MailP}}</td>
+
+        </tr>
+         <tr>
+            <td>Benutzername</td>
+             <td>{{k.BenutzernameP}}</td>
+        </tr>
+    </table>
+
+    {%endfor%}
+    {%endif%}
+</div>
+</div>
+  </div>
+
+
+
+ <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <footer id="footer" style="bottom: 0px;
+position: absolute;
+background-color: whitesmoke;width: 100%">
+ <a href="https://www.comline.de/"><h1 style="color:red" >Comline AG</h1></a> <br>
+     <h4><p>Anschrift</p></h4>
+
+<h6>Comline AG</h6>
+      <h6>Hauert 8</h6>
+      <h6>44227 Dortmund</h6>
+</footer>
+  </body>
+</html>
